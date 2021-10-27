@@ -10,8 +10,11 @@ import { UserPhoto } from '../UserPhoto';
 import LogoSvg from '../../assets/logo.svg';
 
 import { styles } from './styles';
+import { useAuth } from '../../hooks/auth';
 
 export function Header(){
+  const {user} = useAuth()
+
   return (
     <View style={styles.container}>
         <LogoSvg />
@@ -24,7 +27,7 @@ export function Header(){
         </TouchableOpacity>
 
         <UserPhoto 
-        imageUri='https://github.com/pedrohrsantos01.png'
+        imageUri={user?.avatar_url}
         />
       </View>
 
